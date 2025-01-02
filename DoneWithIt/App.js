@@ -1,15 +1,22 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Button,
+  Image,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  StatusBar,
+} from "react-native";
 
 export default function App() {
-  console.log("Debugging");
-  // let x;
-  // x.toString();
   return (
-    <View style={styles.container}>
-      <Text>Successfully Launched our application on Android Simulator</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <Button title="Click Here" onPress={() => alert("Custom Message")} />
+      <StatusBar />
+    </SafeAreaView>
   );
 }
 
@@ -17,7 +24,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+  buttonStyle: {
+    // backgroundColor: "red",
+    cursor: "pointer",
+    borderRadius: "10px",
   },
 });
