@@ -36,3 +36,17 @@
 - We could pass **object** to the style attribute.
 - We can pass multiple properties to the style attribute as `Array`, and the **right side value** would override the left side values.
 - `paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0` -> to get the current device Operating System.
+  > npx expo install expo-image-picker
+- We have to import expo-image-picker as `* AS ImagePicker`.
+
+```javascript
+//Selecting an Image
+const selectImage = async () => {
+  const permission = await ImagePicker.launchImageLibraryAsync();
+  if (permission.canceled) {
+    alert("You have to give the permission to access");
+  } else {
+    setImageUrl(permission.assets[0].uri);
+  }
+};
+```
