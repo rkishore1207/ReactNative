@@ -50,3 +50,5 @@ const selectImage = async () => {
   }
 };
 ```
+
+> npm install react-native-vector-icons
