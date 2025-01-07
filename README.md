@@ -52,3 +52,6 @@ const selectImage = async () => {
 ```
 
 > npm install react-native-vector-icons
+
+- To access the react native icons, we have to look the **documentations** and make some changes in the _settings.gradle, androi/app/build.gradle, MainApplication.java_ files.
+- Then while importing the library, we should specify the **Package** in the end such as _FontAwesome, MaterialCommunityIcons_.
