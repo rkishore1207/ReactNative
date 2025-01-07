@@ -9,6 +9,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -24,7 +25,7 @@ const Index = () => {
     let selectedImage = await ImagePicker.launchImageLibraryAsync();
     const isPresent = checkIfAlreadyPresent(selectedImage.assets[0]);
     if (isPresent) {
-      alert("This image is already Present");
+      alert(`Image ${selectedImage.assets[0].fileName} is already Present`);
     } else {
       selectedImage.canceled
         ? console.log("Clicked Cancel")
@@ -64,6 +65,21 @@ const Index = () => {
           />
         </View>
       </View>
+      <View style={styles.formBody}>
+        <Text style={styles.formTitle}>Post Form</Text>
+        <TextInput placeholder="Name" style={styles.formItem} />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry={true}
+          style={styles.formItem}
+        />
+        <TextInput placeholder="Email" style={styles.formItem} />
+        <View>
+          <View style={styles.formSubmitButton}>
+            <Button title="Submit" />
+          </View>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
@@ -91,5 +107,28 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 10,
+  },
+  formBody: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  formTitle: {
+    textAlign: "center",
+  },
+  formItem: {
+    width: 200,
+    height: 50,
+    border: 1,
+    borderColor: "black",
+    borderStyle: "solid",
+  },
+  formSubmitButtonContainer: {
+    width: "100%",
+  },
+  formSubmitButton: {
+    width: 100,
+    height: 50,
+    marginHorizontal: "auto",
   },
 });
