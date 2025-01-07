@@ -36,3 +36,24 @@
 - We could pass **object** to the style attribute.
 - We can pass multiple properties to the style attribute as `Array`, and the **right side value** would override the left side values.
 - `paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0` -> to get the current device Operating System.
+  > npx expo install expo-image-picker
+- We have to import expo-image-picker as `* AS ImagePicker`.
+
+```javascript
+//Selecting an Image
+const selectImage = async () => {
+  const permission = await ImagePicker.launchImageLibraryAsync();
+  if (permission.canceled) {
+    alert("You have to give the permission to access");
+  } else {
+    setImageUrl(permission.assets[0].uri);
+  }
+};
+```
+
+> npm install react-native-vector-icons
+
+- To access the react native icons, we have to look the **documentations** and make some changes in the _settings.gradle, androi/app/build.gradle, MainApplication.java_ files.
+- Then while importing the library, we should specify the **Package** in the end such as _FontAwesome, MaterialCommunityIcons_.
+
+> npm install react-native-picker/picker -> `Picker` is like a **dropdown**
