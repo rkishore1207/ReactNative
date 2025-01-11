@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Button,
   Image,
@@ -10,12 +10,14 @@ import {
   View,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Index = () => {
   const [images, setImages] = useState([]);
+  const scrollViewRef = useRef();
 
   const checkIfAlreadyPresent = (selectedImage) => {
     return images.some((image) => image.fileName === selectedImage.fileName);
@@ -23,6 +25,7 @@ const Index = () => {
 
   const handleIconClick = async () => {
     let selectedImage = await ImagePicker.launchImageLibraryAsync();
+    console.log(selectedImage, "selectedImage");
     const isPresent = checkIfAlreadyPresent(selectedImage.assets[0]);
     if (isPresent) {
       alert(`Image ${selectedImage.assets[0].fileName} is already Present`);
@@ -42,28 +45,36 @@ const Index = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.imagesContainer}>
-        {images.map((image, index) => {
-          return (
-            <TouchableOpacity
-              key={index}
-              onPress={() => handleImageClick(index)}
-            >
-              <Image
-                source={{ uri: image.uri }}
-                style={styles.containerImage}
+      <View>
+        <ScrollView
+          horizontal
+          ref={scrollViewRef}
+          onContentSizeChange={() => scrollViewRef.current.scrollToEnd()}
+        >
+          <View style={styles.imagesContainer}>
+            {images.map((image, index) => {
+              return (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => handleImageClick(index)}
+                >
+                  <Image
+                    source={{ uri: image.uri }}
+                    style={styles.containerImage}
+                  />
+                </TouchableOpacity>
+              );
+            })}
+            <TouchableOpacity>
+              <Icon
+                name="camera-plus-outline"
+                size={50}
+                style={styles.imageIcon}
+                onPress={handleIconClick}
               />
             </TouchableOpacity>
-          );
-        })}
-        <View>
-          <Icon
-            name="camera-plus-outline"
-            size={50}
-            style={styles.imageIcon}
-            onPress={handleIconClick}
-          />
-        </View>
+          </View>
+        </ScrollView>
       </View>
       <View style={styles.formBody}>
         <Text style={styles.formTitle}>Post Form</Text>
@@ -95,7 +106,6 @@ const styles = StyleSheet.create({
   imagesContainer: {
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap",
     gap: 15,
     justifyContent: "flex-start",
     alignItems: "center",
