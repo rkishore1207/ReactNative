@@ -57,3 +57,7 @@ const selectImage = async () => {
 - Then while importing the library, we should specify the **Package** in the end such as _FontAwesome, MaterialCommunityIcons_.
 
 > npm install react-native-picker/picker -> `Picker` is like a **dropdown**
+
+- **ScrollView** is the component helps to scroll both _horizontally and vertically_
+- To show always on the **right side**, we have to call the `scrollToEnd()` function of the ScrollView().
+- In order to access the method of component, we have to create the instance by `useRef()`.
