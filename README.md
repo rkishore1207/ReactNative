@@ -61,3 +61,11 @@ const selectImage = async () => {
 - **ScrollView** is the component helps to scroll both _horizontally and vertically_
 - To show always on the **right side**, we have to call the `scrollToEnd()` function of the ScrollView().
 - In order to access the method of component, we have to create the instance by `useRef()`.
+
+## What is React Native
+
+- In the Typical Web Development, we are developing the applications by `React.js and React-Dom` library.
+- Actually React-Dom library will **translate** whatever the result of react into the **browser understantable structure**(DOM).
+- Simply React.js just help to do the _state management and component hierarchy_.
+- Hence, _React Native is like React-Dom_, helps to translate the React's result into either **IOS or Android**. That's why it's called React `Native`(Platform Agnostic(independent)).
+- Practically, React.js itself a **Platform Independent**.
