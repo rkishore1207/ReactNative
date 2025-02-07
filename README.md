@@ -61,3 +61,21 @@ const selectImage = async () => {
 - **ScrollView** is the component helps to scroll both _horizontally and vertically_
 - To show always on the **right side**, we have to call the `scrollToEnd()` function of the ScrollView().
 - In order to access the method of component, we have to create the instance by `useRef()`.
+
+## What is React Native
+
+- In the Typical Web Development, we are developing the applications by `React.js and React-Dom` library.
+- Actually React-Dom library will **translate** whatever the result of react into the **browser understantable structure**(DOM).
+- Simply React.js just help to do the _state management and component hierarchy_.
+- Hence, _React Native is like React-Dom_, helps to translate the React's result into either **IOS or Android**. That's why it's called React `Native`(Platform Agnostic(independent)).
+- Practically, React.js itself a **Platform Independent**.
+
+![React Native](https://github.com/user-attachments/assets/bf909807-67dc-4ec9-ae62-dba967d25f6e)
+
+## Styling for platforms
+
+- Some of the components like `TextArea`, doesn't support all the styles to the respective platforms. So we have to **Wrap** around the TextArea component inside the View.
+- `View` must translate all the styles to the respective platforms.
+- StyleSheet object doesn't have the characteristics such as **Cascading and Inheritance**.
+- In Default the List are not scrollable in React Native, so we have to Wrap our components inside the `ScrollView` component, and to make the heights better, we have to wrap the ScrollView into another **View** Component.
+- But for Large number of records, `FlatList` is Preferrable, it will only the records that are visible, and while we scrolling it will **lazy load** the consecutive records.
